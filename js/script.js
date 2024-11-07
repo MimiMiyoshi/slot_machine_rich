@@ -76,9 +76,9 @@ $(document).ready(function () {
   function stopReel(interval, reelId, baseSymbol = null) {
     clearInterval(interval);
 
-    // baseSymbol がある場合、そのシンボルと一致する確率を50%に設定
+    // baseSymbol がある場合、そのシンボルと一致する確率を70%に設定
     let finalSymbol;
-    if (baseSymbol && Math.random() < 0.5) {
+    if (baseSymbol && Math.random() < 0.7) {
       finalSymbol = baseSymbol;
     } else {
       finalSymbol = spinReel();

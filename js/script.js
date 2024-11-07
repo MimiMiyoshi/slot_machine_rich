@@ -19,6 +19,11 @@ $(document).ready(function () {
 
   function updateScore() {
     $("#score").text(score);
+    // スコアが0以下ならGAME OVERを表示
+    if (score <= 0) {
+      $("#result").text("GAME OVER");
+      $("#startButton").prop("disabled", true); // ゲームボタンを無効化
+    }
   }
 
   function spinReel() {

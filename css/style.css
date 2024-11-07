@@ -1,0 +1,259 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: "Arial", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+}
+
+/* エントランス画面 */
+.entrance-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.entrance-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.enter-button {
+  font-size: 24px;
+  padding: 15px 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid gold;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* ゲーム説明モーダル */
+.game-description {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  z-index: 1000;
+}
+
+.description-content {
+  background-color: black;
+  padding: 30px;
+  border: 2px solid gold;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.start-game-button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  background-color: gold;
+  cursor: pointer;
+}
+
+/* スロットマシーンメイン画面 */
+.hidden {
+  display: none;
+}
+
+/* ネオン風タイトルのスタイル */
+.neon-title {
+  font-size: 64px;
+  font-weight: bold;
+  color: white; /* ネオンの青色 */
+  text-shadow: 0 0 10px #0ff, /* 内側の光 */ 0 0 20px #0ff,
+    /* 外側の光 */ 0 0 30px #0ff, 0 0 40px #0ff,
+    /* 大きな光の輝き */ 0 0 70px #0ff, 0 0 100px #0ff; /* 遠くまで輝く光 */
+  margin-bottom: 20px;
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+/* ホバー時にネオンの輝きを強くする */
+.neon-title:hover {
+  text-shadow: 0 0 15px #0ff, 0 0 30px #0ff, 0 0 50px #0ff, 0 0 75px #0ff,
+    0 0 105px #0ff;
+}
+
+.slot-container {
+  text-align: center;
+  background-color: #000;
+  position: relative;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.slot-machine-frame {
+  position: relative;
+  width: 500px;
+  height: 470px;
+  background: url("../img/slot-machine-frame.png") no-repeat center;
+  background-size: contain;
+  margin: 20px auto;
+  z-index: 1;
+}
+
+.slot-machine {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-left: 5px;
+  z-index: 2;
+}
+
+.reel {
+  width: 78px;
+  height: 120px;
+  font-size: 60px;
+  line-height: 120px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: transform 0.5s ease-in-out;
+  margin: 0;
+}
+
+.button-container {
+  position: absolute;
+  margin-top: 51.5%;
+}
+
+/* ボタンのスタイル */
+.button {
+  position: absolute; /* フレーム内の絶対位置に配置 */
+  left: 50%; /* 水平方向中央に揃える */
+  transform: translateX(-50%); /* 正確な中央揃え */
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5ch;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  z-index: 3;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+
+button:hover {
+  background-color: orange;
+}
+
+#result {
+  margin-top: 0px;
+  font-size: 30px;
+  font-weight: bold;
+}
+/* キャンバスの設定（画面全体を覆う） */
+.fireworks-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* ユーザー操作を無効化 */
+  z-index: 10; /* スロットの上に表示 */
+}
+
+/* JACKPOTモード用の背景動画 */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1000; /* 他の要素の上に表示 */
+}
+
+/* JACKPOTメッセージのスタイル */
+#jackpotMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 72px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 3px 3px 5px #000;
+  z-index: 1001; /* 動画の上に表示 */
+  display: none; /* 初期状態では非表示 */
+}
+
+/* JACKPOTアクティブ時のスタイル */
+.jackpot-active .slot-container,
+.jackpot-active #startButton {
+  display: none; /* JACKPOT中はスロットマシンとボタンを非表示 */
+}
+
+.score-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  color: rgb(225, 30, 205);
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 1000; /* Ensures it appears above other content */
+}
+
+/* .score-container {
+  text-align: center;
+  font-size: 24px;
+  margin: 20px;
+} */
+
+/* #result {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+} */
+
+/* JACKPOTメッセージ
+.hidden {
+  display: none;
+}
+
+#jackpotMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 2px 2px 4px #000;
+  z-index: 100;
+} */

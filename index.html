@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slot_Game</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- エントランス画面 -->
+    <div id="entranceScreen" class="entrance-screen">
+      <img
+        src="./img/casino_entrance.jpg"
+        alt="Casino Entrance"
+        class="entrance-image"
+      />
+      <button id="enterButton" class="enter-button">ENTER</button>
+    </div>
+
+    <!-- ゲーム説明モーダル -->
+    <div id="gameDescription" class="game-description hidden">
+      <div class="description-content">
+        <h2>ゲームの説明</h2>
+        <p>
+          このスロットゲームでは、リールを回して絵柄を揃えることを目指します。
+        </p>
+        <p>スタートのボタンを押すと自動でリールが回ります。</p>
+        <p>リールが3つ揃ったら10点獲得です！</p>
+        <p>また、『⭐️』が揃ったら、20点獲得です！！</p>
+        <p>絵柄が揃わなかったら5点の減点です😭</p>
+        <p>無料で獲得できる持ち点は100点です。</p>
+        <p>
+          もっとプレイしたい方はPaypayまたはLinePayでのお支払いをお願いしております。
+        </p>
+        <p>500円の課金で500ポイント獲得できます！</p>
+        <p>それでは、いってらっしゃいませ☺️</p>
+
+        <button id="startGameButton" class="start-game-button">
+          ゲームを開始
+        </button>
+      </div>
+    </div>
+    <!-- スロットマシーンのメイン画面 -->
+    <div id="slotMachine" class="slot-container hidden">
+      <h1 class="neon-title">SLOT MACHINE</h1>
+
+      <div class="slot-machine-frame">
+        <div class="slot-machine">
+          <div class="reel" id="reel1">🍒</div>
+          <div class="reel" id="reel2">🍋</div>
+          <div class="reel" id="reel3">🍇</div>
+          <div class="button-container">
+            <button id="startButton" class="button">START</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="score-container">
+        <h2>Your Score:</h2>
+        <h1><span id="score">100 POINT</span></h1>
+      </div>
+
+      <div id="result"></div>
+      <!-- 花火を表示するためのキャンバス -->
+      <canvas id="fireworksCanvas" class="fireworks-canvas"></canvas>
+    </div>
+
+    <!-- 動画の背景 -->
+    <!-- <video id="coinVideo" class="background-video">
+      <source src="./img/11269_1280x720.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video> -->
+
+    <!-- JACKPOTのメッセージ -->
+    <div id="jackpotMessage" class="hidden">JACKPOT!!</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
